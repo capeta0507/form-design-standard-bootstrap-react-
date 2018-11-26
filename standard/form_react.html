@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../form.css">
+</head>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class MyForm extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                name:"",
+                email:"",
+                job:"",
+                marry:false,
+                grade:false,
+                edu:"",
+                message:"",
+            }
+            this.jobChange = this.jobChange.bind(this);
+            this.marryChange = this.marryChange.bind(this);
+            this.gradutChange = this.gradutChange.bind(this);
+            this.eduChange = this.eduChange.bind(this);
+            this.messageChange = this.messageChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+            
+        }
+        handleSubmit(event){
+            event.preventDefault();
+            // let name = event.target.elements.myname.value;
+            // let email = event.target.elements.myemail.value;
+            // let job = event.target.elements.myJob.value;
+            // let merryCheck = event.target.elements.marry.checked;  // 已婚 true/false
+            // let graduateCheck = event.target.elements.graduation.checked;  //畢業 true / false
+            // let education = event.target.elements.education.value; // 學歷
+            // let message = event.target.elements.message.value;
+
+            // this.setState({
+            //     name : event.target.elements.myname.value,
+            //     email : event.target.elements.myemail.value,
+            //     job : event.target.elements.myJob.value,
+            //     merryCheck : event.target.elements.marry.checked,
+            //     graduateCheck : event.target.elements.graduation.checked,
+            //     education : event.target.elements.education.value,
+            //     message : event.target.elements.message.value
+            // })
+
+            console.log(this.state);
+        }
+        // 方法三:設置onChange(省去bind的步驟)
+        handleName = (e)=>{
+            this.setState({
+                name:e.target.value,
+                
+            }) 
+        }// 方法一:設置onChange(需設定bind)
+        marryChange(e){
+            this.setState({
+                marry:e.target.checked
+            })
+        }
+        gradutChange(e){
+            this.setState({
+                grade:e.target.checked
+            })
+        }
+        jobChange(e){
+            this.setState({
+                job:e.target.value,
+            })
+        }
+        eduChange(e){
+            this.setState({
+                edu:e.target.value,
+            })
+        }
+        messageChange(e){
+            this.setState({
+                message:e.target.value,
+            })
+        }
+
+        render(){
+            return <form id="myform" onSubmit={this.handleSubmit}>
+                        <legend>表單</legend>
+                        <div className="formDiv">
+                            <label for="myname">名字：</label>
+                            <input id="myname" type="text" name="myname" className="inputText" placeholder="Name" onChange={this.handleName}/>
+                        </div>
+                        <br />
+                        <div className="formDiv">
+                            <label for="myemail">電郵：</label>
+                            <input id="myemail" type="text" name="myemail" className="inputText" placeholder="Email" 
+                                onChange={(e)=>{
+                                    this.setState({
+                                        email:e.target.value
+                                    })
+                                }}/>
+                        </div>
+                        <br />
+                        <div className="formDiv">
+                            <label for="">專長：</label>
+                            <select name="myJob" id="myJob" className="inputText" onChange={this.jobChange} >
+                                <option value="0">請選擇...</option>
+                                <option value="1">前端</option>
+                                <option value="2">後端</option>
+                                <option value="3">全端</option>
+                                <option value="4">美編</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div className="formDiv">
+                            <label for="">已婚：</label>
+                            <input id="marry" name="marry" type="checkbox" onChange={this.marryChange}/>
+                        </div>
+                        <br/>
+                        <div className="formDiv">
+                            <label for="">畢業：</label>
+                            <input id="graduation" type="checkbox" name="graduation" onChange={this.gradutChange}/>
+                        </div>
+                        <br/>
+                        <div className="formDiv eduOptions">
+                            <label for="">學歷：</label>
+                            <div>
+                                <input type="radio" name="education" value="1" onChange={this.eduChange}/>
+                                <label>高中</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="education" value="2" onChange={this.eduChange}/>
+                                <label>專科/大學</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="education" value="3" onChange={this.eduChange}/>
+                                <label>碩士/博士</label>
+                            </div>
+                        </div>
+                        <br/>
+                        <div className="formDiv">
+                            <label for="">備註：</label><br/>
+                            <textarea className="inputArea" name="message" rows="10" cols="50" onChange={this.messageChange}>
+                            </textarea>
+                        </div>
+                        <br/>
+                        <div className="formDiv">
+                            <input type="submit" value="送出"/>
+                            <input type="reset" value="重填"/>
+                        </div>
+                   </form>
+        }
+    }
+    
+    var app = document.getElementById("root");
+    ReactDOM.render(
+        <MyForm/>,
+        app
+    );
+</script>
+</html>

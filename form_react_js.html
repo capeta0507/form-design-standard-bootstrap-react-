@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class MyForm extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                jobs : ["請選擇...","前端","後端","全端","美編","UI/UX"],
+                edus : ["高中","專科/大學","碩士","博士"]
+            }
+        }
+        render(){
+            const myJob = this.state.jobs.map((job,index) =>{
+                        // console.log(index,job);
+                        return(<option value={index}>{job}</option>)
+                    }
+                )
+
+            const myEdu = this.state.edus.map((edu,index) =>{
+                        // console.log(index,edu);
+                        return(
+                            <div>
+                                <input type="radio" name="education" />
+                                <label>{edu}</label>
+                            </div>
+                        )
+                    }
+                )
+            // console.log(myEdu);
+            return <form action="" id="myform" >
+                        <fieldset>
+                            <legend>表單</legend>
+                            <div className="formDiv">
+                                <label for="myname">名字：</label>
+                                <input id="myname" type="text" name="myname" className="inputText"/>
+                            </div>
+                            <br />
+                            <div className="formDiv">
+                                <label for="myemail">電郵：</label>
+                                <input id="myemail" type="text" name="myemail" className="inputText"/>
+                            </div>
+                            <br />
+                            <div className="formDiv">
+                                <label for="">專長：</label>
+                                <select name="myJob" id="myJob" className="inputText">
+                                    {myJob}
+                                </select>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">已婚：</label>
+                                <input type="checkbox"/>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">畢業：</label>
+                                <input type="checkbox" checked/>
+                            </div>
+                            <br/>
+                            <div className="formDiv eduOptions">
+                                <label for="">學歷：</label>
+                                {myEdu}
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">備註：</label><br/>
+                                <textarea className="inputArea" name="message" rows="10" cols="50">
+                                </textarea>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <input type="submit" value="送出"/>&nbsp;&nbsp;
+                                <input type="reset" value="重填"/>
+                            </div>
+                        </fieldset>
+                   </form>
+        }
+    }
+    
+    var app = document.getElementById("root");
+    ReactDOM.render(
+        <MyForm/>,
+        app
+    );
+</script>
+</html>

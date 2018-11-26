@@ -1,0 +1,27 @@
+
+#myform{
+    width: 500px;
+    margin: 0 auto;
+}
+.formDiv{
+    width: 400px;
+    margin: 0 auto;
+}
+.inputText{
+    width:300px; 
+    height:20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 4px 4px 3px rgba(20%,20%,40%,0.5);
+}
+.inputArea{
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 4px 4px 3px rgba(26, 26, 82, 0.5);
+}
+.eduOptions{
+    display: flex;
+}
+form{
+    border: 1px solid gray;
+}

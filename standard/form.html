@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../form.css">
+<body>
+    <!-- 若要阻止表單送出的話需在onsubmit(或是onclick)內加上return false，另外若表單內有使用fieldset包覆的話，
+        需注意button按鈕不能寫在fieldset裡面。 -->
+    <form name="myform" id="myform" method="GET" onsubmit="handleSubmit();return false"> 
+            <legend>表單</legend>
+            <br>
+            <div class="formDiv">
+                <label for="myname">名字：</label>
+                <input id="myname" type="text" name="myname" class="inputText" placeholder="Name">
+            </div>
+            <br>
+            <div class="formDiv">
+                <label for="myemail">電郵：</label>
+                <input id="myemail" type="text" name="myemail" class="inputText" placeholder="Email">
+            </div>
+            <br>
+            <div class="formDiv">
+                <label for="">專長：</label>
+                <select name="myJob" id="myJob" class="inputText">
+                    <option value=0>請選擇...</option>
+                    <option value=1>前端</option>
+                    <option value=2>後端</option>
+                    <option value=3>全端</option>
+                    <option value=4>美編</option>
+                </select>
+            </div>
+            <br>
+            <div class="formDiv">
+                <label for="">已婚：</label>
+                <input type="checkbox" id="marry" value="Y">
+            </div>
+            <br>
+            <div class="formDiv">
+                <label for="">畢業：</label>
+                <input type="checkbox" id="graduation" value="畢業">
+            </div>
+            <br>
+            <div class="formDiv eduOptions">
+                <label for="">學歷：</label>
+                <input type="radio" name="education" value=1>
+                <label>高中</label>
+                <input type="radio" name="education" value=2 checked>
+                <label>專科/大學</label>
+                <input type="radio" name="education" value=3>
+                <label>碩士/博士</label>
+            </div>
+            <br>
+            <div class="formDiv">
+                <label for="">備註：</label><br>
+                <textarea id="mytext" class="inputArea" name="message" rows="10" cols="50"></textarea>
+            </div>
+        <div class="formDiv">
+            <br>
+            <input type="submit" value="送出" > &nbsp;&nbsp;
+            <input type="reset" value="重填">
+        </div>
+    </form>
+    <script>
+
+            function handleSubmit(){
+                // e.preventDefault();
+                // 取名字
+                var name = document.getElementById("myname").value;
+                // 取email
+                var email = document.getElementById("myemail").value;
+                // 取被選取的select值
+                var job = document.getElementById("myJob").value;
+                // 取得是否有被勾選
+                var merryCheck = "N";  // 已婚 Y/N
+                var graduateCheck = false;  //畢業 true / false
+                var educateNum = 0;  //學歷 1,2,3  0 - 未選
+                var marry = document.getElementById("marry"); //已婚未婚
+                var graduation = document.getElementById("graduation"); //畢業/肄業
+                var education = document.getElementsByName("education"); //學歷
+                // 取得textarea的內容
+                var Tarea = document.getElementById("mytext").value;
+                // 確認勾選項目(判斷是否有勾選)
+                if(marry.checked){
+                    merryCheck = "Y";
+                }else{
+                    merryCheck = "N";
+                }
+                // 確認勾選項目(判斷是否有勾選)
+                if(graduation.checked){
+                    graduateCheck = true;
+                }else{
+                    graduateCheck = false;
+                }
+                // 確認勾選項目(判斷勾選的項目)
+                for(var x = 0;x<education.length;x++){
+                    if(education[x].checked){
+                        educateNum = x+1;
+                        break;
+                    }
+                }
+                // 將選取的值送上console
+                console.log(name);
+                console.log(email);
+                console.log(job);
+                console.log(merryCheck);
+                console.log(graduateCheck);
+                console.log(educateNum);
+                console.log(Tarea);
+            }
+    </script>
+</body>
+
+</html>

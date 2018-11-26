@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class MyForm extends React.Component{
+        render(){
+            return <form action="" id="myform" >
+                        <fieldset>
+                            <legend>表單</legend>
+                            <div className="formDiv">
+                                <label for="myname">名字：</label>
+                                <input id="myname" type="text" name="myname" className="inputText" placeholder="Name"/>
+                            </div>
+                            <br />
+                            <div className="formDiv">
+                                <label for="myemail">電郵：</label>
+                                <input id="myemail" type="text" name="myemail" className="inputText" placeholder="Email"/>
+                            </div>
+                            <br />
+                            <div className="formDiv">
+                                <label for="">專長：</label>
+                                <select name="myJob" id="myJob" className="inputText">
+                                    <option value="0">請選擇...</option>
+                                    <option value="1">前端</option>
+                                    <option value="2">後端</option>
+                                    <option value="3">全端</option>
+                                    <option value="4">美編</option>
+                                </select>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">已婚：</label>
+                                <input type="checkbox"/>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">畢業：</label>
+                                <input type="checkbox" checked/>
+                            </div>
+                            <br/>
+                            <div className="formDiv eduOptions">
+                                <label for="">學歷：</label>
+                                <div>
+                                    <input type="radio" name="education" />
+                                    <label>高中</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="education" />
+                                    <label>專科/大學</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="education" />
+                                    <label>碩士/博士</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <label for="">備註：</label><br/>
+                                <textarea className="inputArea" name="message" rows="10" cols="50">
+                                </textarea>
+                            </div>
+                            <br/>
+                            <div className="formDiv">
+                                <input type="submit" value="送出"/>
+                                <input type="reset" value="重填"/>
+                            </div>
+                        </fieldset>
+                   </form>
+        }
+    }
+    
+    var app = document.getElementById("root");
+    ReactDOM.render(
+        <MyForm/>,
+        app
+    );
+</script>
+</html>

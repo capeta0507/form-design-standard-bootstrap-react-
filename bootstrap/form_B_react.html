@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./form.css">
+</head>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+    .mycontent{
+        /* border: 1px solid gray; */
+        margin-top: 10px;
+        padding-top: 20px;
+    }
+    form{
+        border: 1px solid gray;
+    }
+</style>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    class Mycontainer extends React.Component{
+        render(){
+            return  <div class="container">
+                        <div class="row justify-content-md-center">
+                            <h1>表單</h1>
+                        </div>
+                        <MyForm/>
+                    </div>
+        }
+    }
+    class MyForm extends React.Component{
+        render(){
+            return <div className="row justify-content-md-center mycontent">
+                        <form className="col-md-5 form-horizontal" role="form">
+                        <br/>
+                            <div className="form-group row">
+                                <label for="inputName" className="col-md-2 control-label">姓名：</label>
+                                <div className="col-md-10">
+                                    <input type="text" className="form-control" id="inputName" placeholder="Name"/>
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <label for="inputPassword3" className="col-md-2 control-label">電郵：</label>
+                                    <div className="col-md-10">
+                                    <input type="email" className="form-control" id="inputPassword3" placeholder="Email"/>
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <div className="col-md-2">已婚：</div>
+                                <div className="col-md-10">
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" id="gridCheck1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div className="col-md-2">畢業：</div>
+                                <div className="col-md-10">
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" id="gridCheck1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-group row">
+                                <div className="col-md-2">專長：</div>
+                                <div className="col-md-10">
+                                    <select className="custom-select">
+                                        <option value="0">請選擇...</option>
+                                        <option value="1">前端</option>
+                                        <option value="2">後端</option>
+                                        <option value="3">全端</option>
+                                        <option value="4">美編</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <fieldset className="form-group">
+                                <div className="row">
+                                    <legend className="col-form-label col-md-2 pt-0">學歷：</legend>
+                                    <div className="col-md-10">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked/>
+                                            <label className="form-check-label" for="gridRadios1">
+                                                高中
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2"/>
+                                            <label className="form-check-label" for="gridRadios2">
+                                                專科/大學
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input className="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3"/>
+                                            <label className="form-check-label" for="gridRadios3">
+                                                碩士/博士
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div className="form-group">
+                                <label for="comment">備註:</label>
+                                <textarea className="form-control" rows="5" id="comment" name="text"></textarea>
+                            </div>
+                            <div className="form-group row">
+                                <div className="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">送出</button>
+                                    <button type="reset" class="btn btn-danger">重填</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+        }
+    }
+    
+    var app = document.getElementById("root");
+    ReactDOM.render(
+        <Mycontainer/>,
+        app
+    );
+</script>
+</html>
